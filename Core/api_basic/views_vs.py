@@ -7,7 +7,7 @@ from .serilaizers import ArticleSerializer
 from django.shortcuts import get_object_or_404
 
 
-class ArticleApiView(viewsets.ViewSet):
+class ArticleApiViewSet(viewsets.ViewSet):
     def list(self, request):
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
