@@ -5,6 +5,8 @@ from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIVie
 
 from .models import Article
 from .serilaizers import ArticleSerializer
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 # https://medium.com/the-andela-way/creating-a-djangorest-api-using-djangorestframework-part-2-1231fe949795
@@ -18,6 +20,8 @@ class GenericAPIVIEW(generics.GenericAPIView,
                      ):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         id = kwargs.get('pk')
