@@ -5,7 +5,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIVie
 
 from .models import Article
 from .serilaizers import ArticleSerializer
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -20,7 +20,8 @@ class GenericAPIVIEW(generics.GenericAPIView,
                      ):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    #authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
