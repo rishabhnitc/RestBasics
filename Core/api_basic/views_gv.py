@@ -10,6 +10,8 @@ from rest_framework.permissions import IsAuthenticated
 
 
 # https://medium.com/the-andela-way/creating-a-djangorest-api-using-djangorestframework-part-2-1231fe949795
+# https://www.django-rest-framework.org/api-guide/authentication/
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html
 
 class GenericAPIVIEW(generics.GenericAPIView,
                      mixins.ListModelMixin,
